@@ -17,6 +17,8 @@
     <description>luke-parent</description>
 
     <properties>
+        <luke.version>1.0.0-SNAPSHOT</luke.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -28,12 +30,19 @@
         <guava.version>24.1-jre</guava.version>
         <dubbo-spring-starter.version>2.0.0</dubbo-spring-starter.version>
         <zookeeper.version>3.4.11</zookeeper.version>
-
-        <luke.version>1.0.0-SNAPSHOT</luke.version>
+        <powermock.version>1.7.3</powermock.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!--一方包-->
+            <dependency>
+                <groupId>com.ryoukai.luke</groupId>
+                <artifactId>luke-common</artifactId>
+                <version>${luke.version}</version>
+            </dependency>
+
+            <!--三方包-->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -96,11 +105,29 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-
             <dependency>
-                <groupId>com.ryoukai.luke</groupId>
-                <artifactId>luke-common</artifactId>
-                <version>${luke.version}</version>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-api-mockito</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-module-junit4-rule</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.powermock</groupId>
+                <artifactId>powermock-classloading-xstream</artifactId>
+                <version>${powermock.version}</version>
+                <scope>test</scope>
             </dependency>
 
         </dependencies>
